@@ -18,6 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body style={{ background: '#12100E', color: '#F3E6D0' }}>
+        <a className="skip-link" href="#main-content">Skip to content</a>
         <div className="grain-overlay" aria-hidden="true" />
         {children}
       </body>

@@ -1,8 +1,19 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
+import { useEffect, useState } from 'react';
 import useLenis from '@/hooks/useLenis';
+import Loader from '@/components/Loader';
+import Navbar from '@/components/Navbar';
+import Hero from '@/components/Hero';
+import RitualSection from '@/components/RitualSection';
+import MenuSection from '@/components/MenuSection';
+import OriginParallax from '@/components/OriginParallax';
+import ExperienceSection from '@/components/ExperienceSection';
+import TastingSection from '@/components/TastingSection';
+import Testimonials from '@/components/Testimonials';
+import ContactSection from '@/components/ContactSection';
+import Footer from '@/components/Footer';
+import FloatingBeans from '@/components/FloatingBeans';
 
 /**
  * Main page - Assembles all sections with smooth scroll, loader, and grain overlay
@@ -19,43 +30,23 @@ import useLenis from '@/hooks/useLenis';
  *   and customizable easing.
  */
 
-// Dynamically import heavy components
-const Loader = dynamic(() => import('@/components/Loader'), { ssr: false });
-const Navbar = dynamic(() => import('@/components/Navbar'), { ssr: false });
-const Hero = dynamic(() => import('@/components/Hero'), { ssr: false });
-const RitualSection = dynamic(() => import('@/components/RitualSection'), { ssr: false });
-const MenuSection = dynamic(() => import('@/components/MenuSection'), { ssr: false });
-const OriginParallax = dynamic(() => import('@/components/OriginParallax'), { ssr: false });
-const ExperienceSection = dynamic(() => import('@/components/ExperienceSection'), { ssr: false });
-const TastingSection = dynamic(() => import('@/components/TastingSection'), { ssr: false });
-const Testimonials = dynamic(() => import('@/components/Testimonials'), { ssr: false });
-const ContactSection = dynamic(() => import('@/components/ContactSection'), { ssr: false });
-const Footer = dynamic(() => import('@/components/Footer'), { ssr: false });
-
 export default function Home() {
   const [loading, setLoading] = useState(true);
-  
-  // Initialize smooth scrolling
+
   useLenis();
 
-  // Prevent scroll during loader
   useEffect(() => {
-    if (loading) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = loading ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [loading]);
 
   return (
     <>
-      {/* Page Loader */}
       {loading && <Loader onComplete={() => setLoading(false)} />}
 
-      {/* Main content - only render after loader completes */}
       {!loading && (
-        <main className="relative">
+        <main id="main-content" className="relative">
+          <FloatingBeans />
           <Navbar />
           <Hero />
           <RitualSection />

@@ -19,7 +19,7 @@ export default function TastingSection() {
             position: 'relative',
             borderRadius: '28px',
             overflow: 'hidden',
-            minHeight: '420px',
+            minHeight: 'clamp(560px, 65vh, 680px)',
             display: 'flex',
             alignItems: 'center',
           }}
@@ -32,10 +32,10 @@ export default function TastingSection() {
             sizes="100vw"
             style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
           />
-          {/* Dark overlay */}
+          {/* Dark overlay — stronger for legibility */}
           <div style={{
             position: 'absolute', inset: 0,
-            background: 'linear-gradient(105deg, rgba(18,16,14,0.9) 0%, rgba(18,16,14,0.65) 55%, rgba(18,16,14,0.45) 100%)',
+            background: 'linear-gradient(105deg, rgba(18,16,14,0.94) 0%, rgba(18,16,14,0.72) 55%, rgba(18,16,14,0.52) 100%)',
           }} />
 
           {/* Animated warm glow */}
@@ -71,18 +71,18 @@ export default function TastingSection() {
           <div style={{
             position: 'relative', zIndex: 1,
             width: '100%',
-            padding: 'clamp(40px, 6vw, 80px)',
+            padding: 'clamp(56px, 8vw, 120px)',
             display: 'flex',
             flexWrap: 'wrap',
             alignItems: 'center',
             justifyContent: 'space-between',
-            gap: '40px',
+            gap: '48px',
           }}>
             {/* Left text */}
-            <div style={{ maxWidth: '520px' }}>
+            <div style={{ maxWidth: '540px' }}>
               <motion.span
                 className="label-text"
-                style={{ display: 'block', marginBottom: '16px' }}
+                style={{ display: 'block', marginBottom: '18px' }}
                 initial={{ opacity: 0, y: 16 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.2 }}
@@ -92,7 +92,7 @@ export default function TastingSection() {
 
               <motion.h2
                 className="section-heading"
-                style={{ marginBottom: '20px' }}
+                style={{ marginBottom: '24px' }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.3 }}
@@ -103,7 +103,7 @@ export default function TastingSection() {
 
               <motion.p
                 className="body-text"
-                style={{ maxWidth: '420px', marginBottom: '32px' }}
+                style={{ maxWidth: '440px', marginBottom: 'clamp(32px, 4vw, 48px)', color: 'var(--muted-strong)', lineHeight: '1.88' }}
                 initial={{ opacity: 0, y: 16 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.4 }}
@@ -113,7 +113,7 @@ export default function TastingSection() {
 
               {/* Details row */}
               <motion.div
-                style={{ display: 'flex', flexWrap: 'wrap', gap: '28px' }}
+                style={{ display: 'flex', flexWrap: 'wrap', gap: '32px' }}
                 initial={{ opacity: 0 }}
                 animate={inView ? { opacity: 1 } : {}}
                 transition={{ delay: 0.5 }}
@@ -124,8 +124,8 @@ export default function TastingSection() {
                   { label: 'Guests',   val: 'Max 12'          },
                 ].map(d => (
                   <div key={d.label}>
-                    <p className="label-text" style={{ color: 'rgba(243,230,208,0.38)', marginBottom: '4px' }}>{d.label}</p>
-                    <p style={{ fontSize: '0.9rem', color: 'var(--cream)', fontWeight: 500 }}>{d.val}</p>
+                    <p className="label-text" style={{ color: 'rgba(243,230,208,0.38)', marginBottom: '6px' }}>{d.label}</p>
+                    <p style={{ fontSize: '0.95rem', color: 'var(--cream)', fontWeight: 500 }}>{d.val}</p>
                   </div>
                 ))}
               </motion.div>
@@ -140,7 +140,7 @@ export default function TastingSection() {
               <button
                 className="btn-primary"
                 onClick={() => document.querySelector('#visit')?.scrollIntoView({ behavior: 'smooth' })}
-                style={{ fontSize: '0.95rem', padding: '16px 40px', minHeight: '56px' }}
+                style={{ fontSize: '1rem', padding: '18px 48px', minHeight: '60px' }}
               >
                 Book a Tasting
                 <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
